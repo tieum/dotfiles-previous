@@ -30,7 +30,8 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+a kill
@@ -100,7 +101,7 @@ set $ws4  "4:  "
 set $ws5  "5:  "
 set $ws6  "6:  "
 set $ws7  "7:  "
-set $ws8  "8: "
+set $ws8  "8:  "
 
 # switch to workspace
 bindsym $mod+ampersand workspace $ws1
@@ -218,8 +219,16 @@ bar {
         #i3bar_command i3bar -t
  }
 
-exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpapers/octocat.png
-exec --no-startup-id i3-msg "workspace $ws1; exec /usr/bin/firefox"
+exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpapers/octocat.jpg
+
+assign [class="Firefox"] $ws1
+assign [class="Xfce4-terminal"] $ws2
+assign [class="Slack"] $ws7
+
+exec --no-startup-id i3-msg "exec /usr/bin/firefox"
+exec --no-startup-id i3-msg "exec /usr/bin/xfce4-terminal"
+exec --no-startup-id i3-msg "exec /usr/bin/slack"
+exec --no-startup-id i3-msg "workspace $ws1"
 exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
 
