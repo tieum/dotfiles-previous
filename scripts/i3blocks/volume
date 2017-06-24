@@ -59,12 +59,15 @@ format() {
   perl -ne "$perl_filter"
 }
 
+active_sink(){
+  pacmd list-sinks | grep \* | awk '{print $3}'
+}
 #------------------------------------------------------------------------
 
 case $BLOCK_BUTTON in
   3) amixer -q -D $MIXER sset $SCONTROL $(capability) toggle ;;  # right click, mute/unmute
-  4) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}+ unmute ;; # scroll up, increase
-  5) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- unmute ;; # scroll down, decrease
+  4) pactl set-sink-volume $(active_sink) +${STEP};; # scroll up, increase
+  5) pactl set-sink-volume $(active_sink) -${STEP};; # scroll down, decrease
 esac
 
 volume | format
