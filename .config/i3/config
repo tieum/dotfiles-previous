@@ -103,6 +103,8 @@ set $ws6  "6:  "
 set $ws7  "7:  "
 set $ws8  "8:  "
 
+workspace_auto_back_and_forth yes
+
 # switch to workspace
 bindsym $mod+ampersand workspace $ws1
 bindsym $mod+eacute workspace $ws2
@@ -211,24 +213,41 @@ set $default_gaps_outer 0
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
 
+# screenshot
+bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/Screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym --release Shift+Print exec --no-startup-id "maim -s -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/Screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+#
+#
+# Pulse Audio controls
+set $active_sink $(pacmd list-sinks | grep \* | awk '{print $3}')
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $active_sink +5% && pkill -RTMIN+10 i3blocks #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $active_sink -5% && pkill -RTMIN+10 i3blocks #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute $active_sink toggle && pkill -RTMIN+10 i3blocks # mute sound
+#
+bindsym $mod+n exec --no-startup-id thunar
+
 set $height 40
 bar {
         font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
         font pango:DejaVu Sans Mono 12
         status_command SCRIPT_DIR=$HOME/scripts/i3blocks i3blocks
-        #i3bar_command i3bar -t
+        i3bar_command i3bar -t
  }
 
-exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpapers/octocat.jpg
-
+exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpapers/tux_desktop.jpg
+exec --no-startup-id compton --config $HOME/.config/compton.conf -b
 assign [class="Firefox"] $ws1
 assign [class="Xfce4-terminal"] $ws2
+assign [class="Atom"] $ws3
+assign [class="Thunar"] $ws5
 assign [class="Slack"] $ws7
 
 exec --no-startup-id i3-msg "exec /usr/bin/firefox"
 exec --no-startup-id i3-msg "exec /usr/bin/xfce4-terminal"
+exec --no-startup-id i3-msg "exec /usr/bin/atom"
 exec --no-startup-id i3-msg "exec /usr/bin/slack"
 exec --no-startup-id i3-msg "workspace $ws1"
 exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
+exec --no-startup-id /usr/bin/libinput-gestures-setup start
 
