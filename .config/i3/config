@@ -227,10 +227,20 @@ bindsym XF86AudioMute exec pactl set-sink-mute $active_sink toggle && pkill -RTM
 bindsym $mod+n exec --no-startup-id thunar
 
 set $height 40
+#bar {
+#        font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#        font pango:DejaVu Sans Mono 12
+#        tray_output none
+#        workspace_buttons no
+#        i3bar_command i3bar -t
+# }
+
 bar {
         font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
         font pango:DejaVu Sans Mono 12
         status_command SCRIPT_DIR=$HOME/scripts/i3blocks i3blocks
+        tray_output primary
+        workspace_buttons yes
         i3bar_command i3bar -t
  }
 
@@ -240,12 +250,15 @@ assign [class="Firefox"] $ws1
 assign [class="Xfce4-terminal"] $ws2
 assign [class="Atom"] $ws3
 assign [class="Thunar"] $ws5
+for_window [class="Spotify"] move to workspace $ws6
 assign [class="Slack"] $ws7
 
 exec --no-startup-id i3-msg "exec /usr/bin/firefox"
 exec --no-startup-id i3-msg "exec /usr/bin/xfce4-terminal"
 exec --no-startup-id i3-msg "exec /usr/bin/atom"
 exec --no-startup-id i3-msg "exec /usr/bin/slack"
+#see: https://webcache.googleusercontent.com/search?q=cache:3DL1EwX_ZZUJ:https://community.spotify.com/t5/Desktop-Linux-Windows-Web-Player/WM-CLASS-window-property-on-Linux/td-p/1247042
+exec --no-startup-id i3-msg "exec /usr/bin/spotify"
 exec --no-startup-id i3-msg "workspace $ws1"
 exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
