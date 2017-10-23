@@ -45,11 +45,6 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+m focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -225,6 +220,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume $active_sink -5% && pkil
 bindsym XF86AudioMute exec pactl set-sink-mute $active_sink toggle && pkill -RTMIN+10 i3blocks # mute sound
 #
 bindsym $mod+n exec --no-startup-id thunar
+
+bindsym $mod+l exec --no-startup-id /usr/local/bin/lock
 
 set $height 40
 #bar {
