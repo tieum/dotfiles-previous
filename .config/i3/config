@@ -44,19 +44,21 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+n exec --no-startup-id thunar
 
+bindsym $mod+l exec --no-startup-id /usr/local/bin/lock
 
-# alternatively, you can use the cursor keys:
+# change focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+m move right
+#bindsym $mod+Shift+j move left
+#bindsym $mod+Shift+k move down
+#bindsym $mod+Shift+l move up
+#bindsym $mod+Shift+m move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -123,6 +125,9 @@ bindsym $mod+Shift+egrave move container to workspace $ws7
 bindsym $mod+Shift+underscore move container to workspace $ws8
 bindsym $mod+Shift+ccedilla move container to workspace 9
 bindsym $mod+Shift+agrave move container to workspace 10
+
+bindsym $mod+m move workspace to output right
+bindsym $mod+Shift+m move workspace to output left
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -218,10 +223,9 @@ set $active_sink $(pacmd list-sinks | grep \* | awk '{print $3}')
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $active_sink +5% && pkill -RTMIN+10 i3blocks #increase sound volume
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume $active_sink -5% && pkill -RTMIN+10 i3blocks #decrease sound volume
 bindsym XF86AudioMute exec pactl set-sink-mute $active_sink toggle && pkill -RTMIN+10 i3blocks # mute sound
+bindsym XF86MonBrightnessUp exec xbacklight +10
 #
-bindsym $mod+n exec --no-startup-id thunar
 
-bindsym $mod+l exec --no-startup-id /usr/local/bin/lock
 
 set $height 40
 #bar {
@@ -235,13 +239,14 @@ set $height 40
 bar {
         font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
         font pango:DejaVu Sans Mono 12
-        status_command SCRIPT_DIR=$HOME/scripts/i3blocks i3blocks
+        status_command SCRIPT_DIR=$HOME/scripts/i3blocks i3blocks -c $HOME/i3blocks.conf
         tray_output primary
         workspace_buttons yes
         i3bar_command i3bar -t
  }
 
-exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpapers/tux_desktop.jpg
+exec --no-startup-id "exec $HOME/dotfiles/scripts/auto-display"
+exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpapers/blackoctocat.png
 exec --no-startup-id compton --config $HOME/.config/compton.conf -b
 assign [class="Firefox"] $ws1
 assign [class="Xfce4-terminal"] $ws2
@@ -257,6 +262,7 @@ exec --no-startup-id i3-msg "exec /usr/bin/slack"
 #see: https://webcache.googleusercontent.com/search?q=cache:3DL1EwX_ZZUJ:https://community.spotify.com/t5/Desktop-Linux-Windows-Web-Player/WM-CLASS-window-property-on-Linux/td-p/1247042
 exec --no-startup-id i3-msg "exec /usr/bin/spotify"
 exec --no-startup-id i3-msg "workspace $ws1"
+exec --no-startup-id i3-msg "cd $HOME/keep/ && yarn start &"
 exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id /usr/bin/libinput-gestures-setup start
