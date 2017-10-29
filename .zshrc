@@ -87,4 +87,7 @@ source $HOME/google-cloud-sdk/completion.zsh.inc
 source $HOME/google-cloud-sdk/path.zsh.inc
 source <(kubectl completion zsh)
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias mp='secret-tool lookup user tieum type mp | mpw -u tieum -m -'
+mp () {
+  secret-tool lookup user tieum type mp | mpw -u tieum -m - $1 | xclip -selection clipboard
+}
+
