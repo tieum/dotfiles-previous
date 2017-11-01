@@ -257,7 +257,6 @@ assign [class="Slack"] $ws7
 
 exec --no-startup-id i3-msg "exec /opt/google/chrome/chrome"
 exec --no-startup-id i3-msg "exec /usr/bin/xfce4-terminal"
-exec --no-startup-id i3-msg "exec /usr/bin/atom"
 exec --no-startup-id i3-msg "exec /usr/bin/slack"
 #see: https://webcache.googleusercontent.com/search?q=cache:3DL1EwX_ZZUJ:https://community.spotify.com/t5/Desktop-Linux-Windows-Web-Player/WM-CLASS-window-property-on-Linux/td-p/1247042
 exec --no-startup-id i3-msg "exec /usr/bin/spotify"
