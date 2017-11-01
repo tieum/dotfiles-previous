@@ -261,7 +261,6 @@ exec --no-startup-id i3-msg "exec /usr/bin/slack"
 #see: https://webcache.googleusercontent.com/search?q=cache:3DL1EwX_ZZUJ:https://community.spotify.com/t5/Desktop-Linux-Windows-Web-Player/WM-CLASS-window-property-on-Linux/td-p/1247042
 exec --no-startup-id i3-msg "exec /usr/bin/spotify"
 exec --no-startup-id i3-msg "workspace $ws1"
-exec --no-startup-id i3-msg "cd $HOME/keep/ && yarn start &"
 exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id /usr/bin/libinput-gestures-setup start
