@@ -30,4 +30,4 @@ let g:webdevicons_conceal_nerdtree_brackets = 0
 
 let g:airline#extensions#whitespace#show_message = 1
 
-set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+set tabstop=2 shiftwidth=2 expandtab
