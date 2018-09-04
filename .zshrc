@@ -49,7 +49,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow github aws terraform debian docker docker-compose)
+plugins=(git git-flow github terraform debian docker docker-compose)
 autoload -U compinit && compinit
 
 # User configuration
@@ -89,4 +89,6 @@ alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 mp () {
   secret-tool lookup user tieum type mp | mpw -u tieum -m - $1 | xclip -selection clipboard
 }
-
+export GOROOT="/usr/local/go"
+export PATH=$PATH:$HOME/.local/bin/
+source $HOME/.local/bin/aws_zsh_completer.sh

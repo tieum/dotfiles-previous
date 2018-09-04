@@ -12,7 +12,6 @@ set encoding=utf8
 let g:airline_powerline_fonts = 1
 set guifont=Meslo\ LG\ M\ for\ Powerline\ 10
 "
-let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
        let g:airline_symbols = {}
 endif
@@ -32,3 +31,5 @@ let g:airline#extensions#whitespace#show_message = 1
 
 set expandtab tabstop=2 shiftwidth=2 softtabstop=2
 set pastetoggle=<F3>
+let g:terraform_align=1
+let g:terraform_remap_spacebar=1
