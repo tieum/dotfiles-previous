@@ -54,8 +54,7 @@ autoload -U compinit && compinit
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/go/bin:/usr/local/android-studio/bin:/home/tieum/Android/Sdk//platform-tools/:/home/tieum/Android/Sdk//build-tools/23.0.1/"
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
 source $ZSH/oh-my-zsh.sh
 
