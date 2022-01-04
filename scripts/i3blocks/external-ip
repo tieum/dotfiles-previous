@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
-
-case $BLOCK_BUTTON in
-    3) echo "$IP" | xclip -selection clipboard ;;
-    *) echo "$IP" ;;
-esac
-
