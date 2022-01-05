@@ -253,7 +253,8 @@ smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+#smart_borders on
+default_border none
 
 exec swaymsg "workspace $ws2; exec $term; layout toggle splith"
 exec sleep 0.3s && swaymsg "workspace $ws2; exec $term"
