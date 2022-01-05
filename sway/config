@@ -123,6 +123,8 @@ input "type:keyboard" {
     bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 #focus_on_window_activation smart
 set $ws1 "1:"
+assign [app_id="firefox"] workspace $ws1
+for_window [app_id="firefox"] inhibit_idle fullscreen
 set $ws2 "2:"
 assign [app_id="Alacritty"] workspace $ws2
 set $ws3 "3:"
@@ -217,8 +219,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #idle lock
-set $lock swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 0.2:0.5 --effect-blur 4x2 --datestr "%a %e.%m.%Y" --timestr "%k:%M"
-exec swayidle -w \
+set $lock 'swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 1:1 --effect-blur 3x3 --datestr "%a %e.%m.%Y" --timestr "%k:%M"'
+exec swayidle -d -w \
     timeout 600 $lock \
     timeout 570 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
