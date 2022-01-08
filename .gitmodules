@@ -1,39 +1,21 @@
-[submodule ".vim/bundle/bufexplorer"]
-	path = .vim/bundle/bufexplorer
-	url = git@github.com:jlanzarotta/bufexplorer.git
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
-[submodule ".vim/bundle/nerdtree-git-plugin"]
-	path = .vim/bundle/nerdtree-git-plugin
-	url = git@github.com:Xuyuanp/nerdtree-git-plugin.git
-[submodule ".vim/bundle/vim-airline"]
-	path = .vim/bundle/vim-airline
-	url = git@github.com:vim-airline/vim-airline.git
-[submodule ".vim/bundle/vim-airline-themes"]
-	path = .vim/bundle/vim-airline-themes
-	url = git@github.com:vim-airline/vim-airline-themes.git
-[submodule ".vim/bundle/vim-csexact"]
-	path = .vim/bundle/vim-csexact
-	url = git@github.com:KevinGoodsell/vim-csexact.git
 [submodule ".vim/bundle/vim-devicons"]
 	path = .vim/bundle/vim-devicons
 	url = git@github.com:ryanoasis/vim-devicons.git
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule ".vim/bundle/vim-airline-themes"]
+	path = .vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-grepper"]
-	path = .vim/bundle/vim-grepper
-	url = git@github.com:mhinz/vim-grepper.git
 [submodule ".vim/bundle/vim-json"]
 	path = .vim/bundle/vim-json
 	url = git@github.com:elzr/vim-json.git
 [submodule ".vim/bundle/vim-sensible"]
 	path = .vim/bundle/vim-sensible
 	url = git@github.com:tpope/vim-sensible.git
-[submodule ".vim/bundle/vim-trailing-whitespace"]
-	path = .vim/bundle/vim-trailing-whitespace
-	url = git@github.com:bronson/vim-trailing-whitespace.git
-[submodule ".vim/bundle/vim-go"]
-	path = .vim/bundle/vim-go
-	url = https://github.com/fatih/vim-go.git
+[submodule ".vim/bundle/vim-terraform"]
+	path = .vim/bundle/vim-terraform
+	url = git@github.com:hashivim/vim-terraform.git
