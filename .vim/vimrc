@@ -1,4 +1,4 @@
-set t_Co=256
+set mouse=a
 execute pathogen#infect()
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
@@ -6,30 +6,18 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 colorscheme luna
-"nmap <silent> <C-D> :NERDTreeToggle<CR>
-map <C-n> :NERDTreeToggle<CR>
 set encoding=utf8
-let g:airline_powerline_fonts = 1
-set guifont=Meslo\ LG\ M\ for\ Powerline\ 10
-"
-if !exists('g:airline_symbols')
-       let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_theme = 'kalisi'
-
-"close vim if only nerdtree is open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-"autocmd vimenter * NERDTree | wincmd p
-
-let g:webdevicons_conceal_nerdtree_brackets = 0
-
-let g:airline#extensions#whitespace#show_message = 1
 
 set expandtab tabstop=2 shiftwidth=2 softtabstop=2
 set pastetoggle=<F3>
-let g:terraform_align=1
-let g:terraform_remap_spacebar=1
+
+set laststatus=2
+set noshowmode
+
+hi CursorLine term=bold cterm=bold ctermbg=8
+set cursorline
+
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pi
+
+let g:airline_theme='luna'

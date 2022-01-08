@@ -26,7 +26,7 @@ set $menu fuzzel -b 12345678 -t ffffffff -I -f SourceCodePro-Bold -m 000040ff | 
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg $HOME/.config/wallpapers/cassette-highres-flip.jpg fill
+#output * bg $HOME/.config/wallpapers/cassette-highres-flip.jpg fill
 #
 # Example configuration:
 #
@@ -219,10 +219,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #idle lock
-set $lock 'swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 1:1 --effect-blur 3x3 --datestr "%a %e.%m.%Y" --timestr "%k:%M"'
-exec swayidle -d -w \
-    timeout 600 $lock \
-    timeout 570 'swaymsg "output * dpms off"' \
+set $lock 'swaylock -f --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 1:1 --effect-blur 3x3 --datestr "%a %e.%m.%Y" --timestr "%k:%M"'
+exec swayidle -w \
+    timeout 300 $lock \
+    timeout 330 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
     before-sleep $lock
 
@@ -256,9 +256,21 @@ smart_gaps on
 #smart_borders on
 default_border none
 
-exec swaymsg "workspace $ws2; exec $term; layout toggle splith"
-exec sleep 0.3s && swaymsg "workspace $ws2; exec $term"
+#Screen brightness controls
+bindsym XF86MonBrightnessUp exec "light -s sysfs/backlight/auto -A 10; notify-send -c light 'brightness up'"
+bindsym XF86MonBrightnessDown exec "light -s sysfs/backlight/auto -U 10; notify-send -c light 'brightness down'"
+
+#Volume brightness controls
+bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle; notify-send -c sound '(un)mute'"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +5%; notify-send -c sound 'volume up'"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -5%; notify-send -c sound 'volume down'"
+
+exec swaymsg "workspace $ws2; exec $term;  exec $term"
 
 exec nm-applet --indicator
+
+exec mako
+
+exec mpvpaper eDP-1 $HOME/.config/wallpapers/wave.mp4 -o "--loop yes" -f
 
 include /etc/sway/config.d/*
