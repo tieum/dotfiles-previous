@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-for config in alacritty sway waybar
+for config in alacritty sway waybar mako wallpapers
 do
   ln -s $HOME/dotfiles/$config $HOME/.config/$config
 done
