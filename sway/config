@@ -272,5 +272,6 @@ exec nm-applet --indicator
 exec mako
 
 exec mpvpaper eDP-1 $HOME/.config/wallpapers/wave.mp4 -o "--loop yes" -f
+bindsym $mod+p exec ~/.config/sway/pausempv.sh
 
 include /etc/sway/config.d/*
