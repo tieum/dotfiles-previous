@@ -127,8 +127,9 @@ assign [app_id="firefox"] workspace $ws1
 for_window [app_id="firefox"] inhibit_idle fullscreen
 set $ws2 "2:"
 assign [app_id="Alacritty"] workspace $ws2
-set $ws3 "3:"
-set $ws4 "4:"
+set $ws3 "3:📧"
+assign [class="Thunderbird"] workspace $ws3
+set $ws4 "4:"
 set $ws5 "5:"
 set $ws6 "6:"
 set $ws7 "7:"
@@ -270,6 +271,10 @@ exec swaymsg "workspace $ws2; exec $term;  exec $term"
 exec nm-applet --indicator
 
 exec mako
+
+exec thunderbird
+
+exec gtk-launch firefox-nightly.desktop
 
 exec mpvpaper eDP-1 $HOME/.config/wallpapers/wave.mp4 -o "--loop yes" -f
 bindsym $mod+p exec ~/.config/sway/pausempv.sh
