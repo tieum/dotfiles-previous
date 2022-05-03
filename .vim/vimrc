@@ -9,7 +9,18 @@ colorscheme luna
 set encoding=utf8
 
 set expandtab tabstop=2 shiftwidth=2 softtabstop=2
-set pastetoggle=<F3>
+
+"autodetect paste
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
 
 set laststatus=2
 set noshowmode
